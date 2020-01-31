@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xhrr.github.io/</id>
     <title>大青的Blog</title>
-    <updated>2020-01-31T01:20:37.826Z</updated>
+    <updated>2020-01-31T01:28:24.576Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xhrr.github.io/"/>
     <link rel="self" href="https://xhrr.github.io/atom.xml"/>
@@ -76,7 +76,7 @@ fetch = +refs/heads/<em>:refs/remotes/origin/</em><br>
 <p>🏠 关于本站<br>
 这里是大青的blog😀😀😀😀😀</p>
 <p>👨‍💻 博主是谁<br>
-李大青😆😆😆</p>
+大青😆😆😆</p>
 <p>⛹ 兴趣爱好<br>
 吃饭睡觉打豆豆😑😑😑😑</p>
 <p>📬 联系我呀<br>
