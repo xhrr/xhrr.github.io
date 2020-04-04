@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xhrr.github.io/</id>
     <title>大青的Blog</title>
-    <updated>2020-03-22T07:50:17.279Z</updated>
+    <updated>2020-04-04T12:05:42.136Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xhrr.github.io/"/>
     <link rel="self" href="https://xhrr.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://xhrr.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 大青的Blog</rights>
     <entry>
-        <title type="html"><![CDATA[MySQL学习笔记--不区分大小写]]></title>
+        <title type="html"><![CDATA[MySQL学习笔记（摘]]></title>
         <id>https://xhrr.github.io/post/mysql-xue-xi-bi-ji/</id>
         <link href="https://xhrr.github.io/post/mysql-xue-xi-bi-ji/">
         </link>
@@ -1554,141 +1554,6 @@ SELECT * FROM user;
 |  4 | 淘宝店    |  1000 |
 +----+-----------+-------+
 </code></pre>
-<p>但是这样还有问题，那就是假设一个事务在操作数据时，其他事务干扰了这个事务的数据。例如：</p>
-<pre><code class="language-mysql">-- 小张在查询数据的时候发现：
-SELECT * FROM user;
-+----+-----------+-------+
-| id | name      | money |
-+----+-----------+-------+
-|  1 | a         |   900 |
-|  2 | b         |  1100 |
-|  3 | 小明      |   200 |
-|  4 | 淘宝店    |  1800 |
-+----+-----------+-------+
-
--- 在小张求表的 money 平均值之前，小王做了一个操作：
-START TRANSACTION;
-INSERT INTO user VALUES (5, 'c', 100);
-COMMIT;
-
--- 此时表的真实数据是：
-SELECT * FROM user;
-+----+-----------+-------+
-| id | name      | money |
-+----+-----------+-------+
-|  1 | a         |   900 |
-|  2 | b         |  1100 |
-|  3 | 小明      |  1000 |
-|  4 | 淘宝店    |  1000 |
-|  5 | c         |   100 |
-+----+-----------+-------+
-
--- 这时小张再求平均值的时候，就会出现计算不相符合的情况：
-SELECT AVG(money) FROM user;
-+------------+
-| AVG(money) |
-+------------+
-|  820.0000  |
-+------------+
-</code></pre>
-<p>虽然 <strong>READ COMMITTED</strong> 让我们只能读取到其他事务已经提交的数据，但还是会出现问题，就是<strong>在读取同一个表的数据时，可能会发生前后不一致的情况。<strong>这被称为</strong>不可重复读现象 ( READ COMMITTED )</strong> 。</p>
-<h4 id="幻读">幻读</h4>
-<p>将隔离级别设置为 <strong>REPEATABLE READ ( 可被重复读取 )</strong> :</p>
-<pre><code class="language-mysql">SET GLOBAL TRANSACTION ISOLATION LEVEL REPEATABLE READ;
-SELECT @@GLOBAL.TRANSACTION_ISOLATION;
-+--------------------------------+
-| @@GLOBAL.TRANSACTION_ISOLATION |
-+--------------------------------+
-| REPEATABLE-READ                |
-+--------------------------------+
-</code></pre>
-<p>测试 <strong>REPEATABLE READ</strong> ，假设在两个不同的连接上分别执行 <code>START TRANSACTION</code> :</p>
-<pre><code class="language-sql">-- 小张 - 成都
-START TRANSACTION;
-INSERT INTO user VALUES (6, 'd', 1000);
-
--- 小王 - 北京
-START TRANSACTION;
-
--- 小张 - 成都
-COMMIT;
-</code></pre>
-<p>当前事务开启后，没提交之前，查询不到，提交后可以被查询到。但是，在提交之前其他事务被开启了，那么在这条事务线上，就不会查询到当前有操作事务的连接。相当于开辟出一条单独的线程。</p>
-<p>无论小张是否执行过 <code>COMMIT</code> ，在小王这边，都不会查询到小张的事务记录，而是只会查询到自己所处事务的记录：</p>
-<pre><code class="language-sql">SELECT * FROM user;
-+----+-----------+-------+
-| id | name      | money |
-+----+-----------+-------+
-|  1 | a         |   900 |
-|  2 | b         |  1100 |
-|  3 | 小明      |  1000 |
-|  4 | 淘宝店    |  1000 |
-|  5 | c         |   100 |
-+----+-----------+-------+
-</code></pre>
-<p>这是<strong>因为小王在此之前开启了一个新的事务 ( <code>START TRANSACTION</code> ) <strong>，那么</strong>在他的这条新事务的线上，跟其他事务是没有联系的</strong>，也就是说，此时如果其他事务正在操作数据，它是不知道的。</p>
-<p>然而事实是，在真实的数据表中，小张已经插入了一条数据。但是小王此时并不知道，也插入了同一条数据，会发生什么呢？</p>
-<pre><code class="language-sql">INSERT INTO user VALUES (6, 'd', 1000);
--- ERROR 1062 (23000): Duplicate entry '6' for key 'PRIMARY'
-</code></pre>
-<p>报错了，操作被告知已存在主键为 <code>6</code> 的字段。这种现象也被称为<strong>幻读，一个事务提交的数据，不能被其他事务读取到</strong>。</p>
-<h4 id="串行化">串行化</h4>
-<p>顾名思义，就是所有事务的<strong>写入操作</strong>全都是串行化的。什么意思？把隔离级别修改成 <strong>SERIALIZABLE</strong> :</p>
-<pre><code class="language-mysql">SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-SELECT @@GLOBAL.TRANSACTION_ISOLATION;
-+--------------------------------+
-| @@GLOBAL.TRANSACTION_ISOLATION |
-+--------------------------------+
-| SERIALIZABLE                   |
-+--------------------------------+
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[一个孩子的星星梦  ---狄更斯]]></title>
-        <id>https://xhrr.github.io/post/yi-ge-hai-zi-de-xing-xing-meng-di-geng-si/</id>
-        <link href="https://xhrr.github.io/post/yi-ge-hai-zi-de-xing-xing-meng-di-geng-si/">
-        </link>
-        <updated>2020-02-25T02:56:45.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<p>从前有一个小男孩，漫步山间田野，四处游荡闲逛，脑子里想着各种各样的事情。他有个姐姐，也是个小孩子，是他形影相随的亲密伙伴。他们常常终日神思遐想，对一切充满好奇。他们惊叹花的美丽，惊叹天空的高远和蔚蓝，惊叹明媚河水的幽深，惊叹上帝——这个可爱世界的缔造者——的仁慈和力量。</p>
-<p>他们常常互相问询：‘如果有那么一天，假使世界上的孩子都死了，花和水还有天空，它们会感到难过吗？’他们坚信，它们会感到难过的。‘因为’他们认为，‘蓓蕾是花的孩子，山谷里奔腾的欢快的小溪是河水的孩子；通宵在天空中玩捉迷藏的那些最小的光点，想必是星星的孩子；当它们再也找不到自己的伙伴——人类的孩子，它们肯定都会伤心的。’</p>
-<p>每天晚上，在教堂尖顶附近，墓地的上空，就会有一颗闪灵的星星先于其他星星，出现在夜空。在他们的眼里，它比其他所有的星星都更大更美。每天夜晚，他们都手拉手站在窗前守候着它。无论谁先看到那颗星星，都会大喊道：‘我看见星星啦！’而通常的情形是，他们会齐声喊将起来，因为他们太熟悉它升起的时间和地方了。渐渐的，他们和那颗星星成了及其要好的朋友；每天就寝之前，他们都要向窗外再张望一眼，向星星道晚安；当他们转身准备入睡时，就会念上一句：‘上帝保佑星星！’</p>
-<p>可是，在那样幼小的年纪，哦，非常非常小的年纪，他们的姐姐就枯萎憔悴了。她变得太虚弱了，以及不再可能夜里站在窗前，于是哪个男孩忧伤地独自望着窗外。每当他看到了那颗星星，他会转过身来对着床上那张苍白的面孔说道：‘我看见星星啦！’这时，一丝微笑会浮现在她的脸上，一个微弱的声音答道：‘上帝保佑我的弟弟和星星！’</p>
-<p>不久，不幸的时刻来临了，一切都来的那么突然！从此男孩独自一人望着窗外；从此床上不再有任何面庞；从此墓地中多了一个从前没有的小小的坟墓，每当他泪眼婆娑的望着那颗星星，星星无垠的光芒照耀在他的身上。</p>
-<p>如今，这些光芒是那样地明亮，似乎铺就了一条从人间通往天堂的金光大道，当男孩孤独地睡在自己床上，他梦见了那颗星星，他梦见自己躺在窗上，看见一对人在天使的引领下走上了那条金光大道。那颗星星四敞大开着，一个光明神圣的世界展现在他的面前，许多这样的天使在那里迎候他们。</p>
-<p>所有这些在此等候的天使，用它们愉快的目光注视着那些被带到星星上来的人们。有些天使从他们站着的长长队列中出来，落到人们的脖子上，温柔地亲吻着，然后和他们一起沿着星光大道离开，他们在一起无比开心，小男孩躺在床上，高兴得哭了。</p>
-<p>但有许多天使并没有和他们一起离开，其中有一张小男孩非常熟悉的面孔，那张曾经病恹恹地躺在床上的面孔，如今已变得容光焕发，光彩照人，然而他的确能够在天国所有的主人中找出他的姐姐。</p>
-<p>他的天使姐姐在星星的入口处徘徊不前，逗留不去，问那位把人们带到彼岸来的天使长:‘我的弟弟来了吗？’</p>
-<p>天使长答道‘没有。’</p>
-<p>她满怀希望的转身，准备离去，小男孩连忙伸出手臂喊道：‘噢，姐姐，我在这儿呢！带我走吧！’于是她转头朝小男孩看去，含笑的目光落在他的身上，然后，一切便陷入黑暗。星光在房间里闪耀，当他泪眼婆娑地望着那颗星星，星星无垠的光芒照耀在他身上。</p>
-<p>从那次后，小男孩每次看到那颗星星，犹如看到自己大限来临时要回的家。他认为，自己不但属于尘世，也属于那颗星星，因为他的天使姐姐已经去了那里。</p>
-<p>一个婴儿诞生了，小男孩添了一个弟弟。他是那么小，还从未说过一句话，在床上伸展着小胳膊小腿儿，死了。</p>
-<p>小男孩又一次梦到了敞开的星星、成群的天使和一长列的人，一队队的天使用充满喜悦的目光注视着人们的面庞。</p>
-<p>他的天使姐姐向天使长问道：‘我的弟弟来了吗？’</p>
-<p>天使长答道：‘来了，但不是那个弟弟，而是另一个。’</p>
-<p>当小男孩看到天使的的在天使姐姐的怀抱里，便喊道：‘噢，姐姐，我在这儿呢！带我走吧！’</p>
-<p>于是她回过身来微笑着注视他。那颗星星在闪耀。</p>
-<p>他渐渐长大，成了一个年轻人。一天，他正忙着伏案读书，一位老仆人走了进来，对他说道：‘您的母亲去世了。我带来了她对自己心爱的儿子的祝福！‘</p>
-<p>夜里他再一次梦到了星星，以及从前梦里的天使和人群。他的天使姐姐向天使长问道：</p>
-<p>‘我的弟弟来了吗？’</p>
-<p>天使长答道：‘没有，你的妈妈来了！’</p>
-<p>一声喜悦的惊呼响彻了星星的各个角落，因为妈妈又和自己的两个孩子重新团聚了。小男孩伸出双臂喊道：‘哎，妈妈，姐姐，弟弟，我在这儿呢！带我走吧！’</p>
-<p>他们答道：‘现在还不行。’那颗星星在闪耀。</p>
-<p>渐渐地，他步入中年，点点灰白慢慢爬上他的发际。一天，他心情沉重地坐在炉边的安乐椅上，涟涟泪水濡湿了他哀伤的面庞，这时，星星再一次打开了它的大门。</p>
-<p>他的天使姐姐向天使长问道：</p>
-<p>‘我的弟弟来了吗？’</p>
-<p>天使长答道：‘没有，但是他那没有出嫁的女儿来了。’</p>
-<p>于是，这个曾经是小男孩的中年人看到了自己刚刚失去的女儿，一个天国中的生灵，在三位亲人中间。他说道：‘我女儿的头依偎在我姐姐的胸前，她的胳膊环在我妈妈的脖子上，她的脚旁是那位婴儿前辈。我能够忍受和她的别离，赞美上帝！’</p>
-<p>那颗星星在闪耀。</p>
-<p>就这样小男孩成了一位年迈的老人，他那曾经光滑的面庞如今布满了皱纹，步履迟缓而无力，背也驼了。一天晚上，他躺在床上，四周围站着他的孩子，他大喊了一声，就像他很久很久以前哪样大声喊道：</p>
-<p>'我看见星星了！’</p>
-<p>孩子们互相低语道：</p>
-<p>‘他快不行了。’</p>
-<p>他说道：‘是的。我的寿数就要到了，就像一件滑落的外衣马上就要离我而去了，我就要作为一个孩子走向那颗星星。哦，我的主啊，现在我要感谢您，感谢那颗星星常常开放，收留了那些等待我的亲人！’</p>
-<p>那颗星星在闪耀；直到今天，它仍然闪耀在他的坟墓上方。”</p>
-<p>（温哲仙 译）</p>
-<!-- more -->
 ]]></content>
     </entry>
     <entry>
@@ -1700,7 +1565,7 @@ SELECT @@GLOBAL.TRANSACTION_ISOLATION;
         <content type="html"><![CDATA[<!-- more -->
 <!-- more -->
 <!-- more -->
-<p>1 注册github的账号并且创建一个仓库<br>
+<p>##1 注册github的账号并且创建一个仓库<br>
 注册之后，点击如图所示的地方<br>
 <img src="https://xhrr.github.io//post-images/1580392344322.png" alt="" loading="lazy"><br>
 然后<br>
@@ -1720,7 +1585,7 @@ SELECT @@GLOBAL.TRANSACTION_ISOLATION;
 <img src="https://xhrr.github.io//post-images/1580394056585.png" alt="" loading="lazy"><br>
 <img src="https://xhrr.github.io//post-images/1580394062775.png" alt="" loading="lazy"></p>
 <p>😃😃😃😃到这里，第一步就算好啦</p>
-<p>2.下载安装git<br>
+<p>##2.下载安装git<br>
 下载地址：https://git-scm.com/downloads<br>
 然后如图所示，每错，这次直接从PPT截图（感觉会被锤😉😉😉😉）<br>
 <img src="https://xhrr.github.io//post-images/1580394315398.png" alt="" loading="lazy"><br>
@@ -1730,7 +1595,7 @@ SELECT @@GLOBAL.TRANSACTION_ISOLATION;
 <img src="https://xhrr.github.io//post-images/1580394341176.png" alt="" loading="lazy"><br>
 <img src="https://xhrr.github.io//post-images/1580394346768.png" alt="" loading="lazy"><br>
 <img src="https://xhrr.github.io//post-images/1580394351888.png" alt="" loading="lazy"></p>
-<p>3 下载安装Gridea<br>
+<p>##3 下载安装Gridea<br>
 官网：https://gridea.dev<br>
 不过下载速度很慢，可以复制链接进迅雷https://github.com/getgridea/gridea/releases/download/v0.9.1/Gridea.Setup.0.9.1.exe，虽然也不快，但是比网页下快多了。这个就傻瓜式直接next就行。<br>
 <img src="https://xhrr.github.io//post-images/1580394894832.png" alt="" loading="lazy"><br>

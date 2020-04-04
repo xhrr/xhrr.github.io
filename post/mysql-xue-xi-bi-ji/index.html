@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>大青的Blog</title>
 <meta name="description" content="emmmmmmm" />
-<link rel="shortcut icon" href="https://xhrr.github.io//favicon.ico?v=1584863401888">
+<link rel="shortcut icon" href="https://xhrr.github.io//favicon.ico?v=1586001873104">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://xhrr.github.io/">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xhrr.github.io//images/avatar.png?v=1584863401888" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xhrr.github.io//images/avatar.png?v=1586001873104" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">大青的Blog</h1>
       </div>
@@ -105,8 +105,6 @@
 <ul>
 <li><a href="#%E8%84%8F%E8%AF%BB">脏读</a></li>
 <li><a href="#%E8%AF%BB%E5%8F%96%E5%B7%B2%E6%8F%90%E4%BA%A4">读取已提交</a></li>
-<li><a href="#%E5%B9%BB%E8%AF%BB">幻读</a></li>
-<li><a href="#%E4%B8%B2%E8%A1%8C%E5%8C%96">串行化</a></li>
 </ul>
 </li>
 </ul>
@@ -159,9 +157,9 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">MySQL学习笔记--不区分大小写</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">MySQL学习笔记（摘</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-03-07 / 43 min read
+          2020-03-07 / 40 min read
         </div>
         
           <img class="post-feature-image rounded-lg mx-auto my-4" src="https://xhrr.github.io//post-images/mysql-xue-xi-bi-ji.jpg" alt="">
@@ -1705,94 +1703,6 @@ SELECT * FROM user;
 |  4 | 淘宝店    |  1000 |
 +----+-----------+-------+
 </code></pre>
-<p>但是这样还有问题，那就是假设一个事务在操作数据时，其他事务干扰了这个事务的数据。例如：</p>
-<pre><code class="language-mysql">-- 小张在查询数据的时候发现：
-SELECT * FROM user;
-+----+-----------+-------+
-| id | name      | money |
-+----+-----------+-------+
-|  1 | a         |   900 |
-|  2 | b         |  1100 |
-|  3 | 小明      |   200 |
-|  4 | 淘宝店    |  1800 |
-+----+-----------+-------+
-
--- 在小张求表的 money 平均值之前，小王做了一个操作：
-START TRANSACTION;
-INSERT INTO user VALUES (5, 'c', 100);
-COMMIT;
-
--- 此时表的真实数据是：
-SELECT * FROM user;
-+----+-----------+-------+
-| id | name      | money |
-+----+-----------+-------+
-|  1 | a         |   900 |
-|  2 | b         |  1100 |
-|  3 | 小明      |  1000 |
-|  4 | 淘宝店    |  1000 |
-|  5 | c         |   100 |
-+----+-----------+-------+
-
--- 这时小张再求平均值的时候，就会出现计算不相符合的情况：
-SELECT AVG(money) FROM user;
-+------------+
-| AVG(money) |
-+------------+
-|  820.0000  |
-+------------+
-</code></pre>
-<p>虽然 <strong>READ COMMITTED</strong> 让我们只能读取到其他事务已经提交的数据，但还是会出现问题，就是<strong>在读取同一个表的数据时，可能会发生前后不一致的情况。<strong>这被称为</strong>不可重复读现象 ( READ COMMITTED )</strong> 。</p>
-<h4 id="幻读">幻读</h4>
-<p>将隔离级别设置为 <strong>REPEATABLE READ ( 可被重复读取 )</strong> :</p>
-<pre><code class="language-mysql">SET GLOBAL TRANSACTION ISOLATION LEVEL REPEATABLE READ;
-SELECT @@GLOBAL.TRANSACTION_ISOLATION;
-+--------------------------------+
-| @@GLOBAL.TRANSACTION_ISOLATION |
-+--------------------------------+
-| REPEATABLE-READ                |
-+--------------------------------+
-</code></pre>
-<p>测试 <strong>REPEATABLE READ</strong> ，假设在两个不同的连接上分别执行 <code>START TRANSACTION</code> :</p>
-<pre><code class="language-sql">-- 小张 - 成都
-START TRANSACTION;
-INSERT INTO user VALUES (6, 'd', 1000);
-
--- 小王 - 北京
-START TRANSACTION;
-
--- 小张 - 成都
-COMMIT;
-</code></pre>
-<p>当前事务开启后，没提交之前，查询不到，提交后可以被查询到。但是，在提交之前其他事务被开启了，那么在这条事务线上，就不会查询到当前有操作事务的连接。相当于开辟出一条单独的线程。</p>
-<p>无论小张是否执行过 <code>COMMIT</code> ，在小王这边，都不会查询到小张的事务记录，而是只会查询到自己所处事务的记录：</p>
-<pre><code class="language-sql">SELECT * FROM user;
-+----+-----------+-------+
-| id | name      | money |
-+----+-----------+-------+
-|  1 | a         |   900 |
-|  2 | b         |  1100 |
-|  3 | 小明      |  1000 |
-|  4 | 淘宝店    |  1000 |
-|  5 | c         |   100 |
-+----+-----------+-------+
-</code></pre>
-<p>这是<strong>因为小王在此之前开启了一个新的事务 ( <code>START TRANSACTION</code> ) <strong>，那么</strong>在他的这条新事务的线上，跟其他事务是没有联系的</strong>，也就是说，此时如果其他事务正在操作数据，它是不知道的。</p>
-<p>然而事实是，在真实的数据表中，小张已经插入了一条数据。但是小王此时并不知道，也插入了同一条数据，会发生什么呢？</p>
-<pre><code class="language-sql">INSERT INTO user VALUES (6, 'd', 1000);
--- ERROR 1062 (23000): Duplicate entry '6' for key 'PRIMARY'
-</code></pre>
-<p>报错了，操作被告知已存在主键为 <code>6</code> 的字段。这种现象也被称为<strong>幻读，一个事务提交的数据，不能被其他事务读取到</strong>。</p>
-<h4 id="串行化">串行化</h4>
-<p>顾名思义，就是所有事务的<strong>写入操作</strong>全都是串行化的。什么意思？把隔离级别修改成 <strong>SERIALIZABLE</strong> :</p>
-<pre><code class="language-mysql">SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-SELECT @@GLOBAL.TRANSACTION_ISOLATION;
-+--------------------------------+
-| @@GLOBAL.TRANSACTION_ISOLATION |
-+--------------------------------+
-| SERIALIZABLE                   |
-+--------------------------------+
-</code></pre>
 
         </div>
 
@@ -1808,9 +1718,9 @@ SELECT @@GLOBAL.TRANSACTION_ISOLATION;
 
           
             <div class="next-post">
-              <a href="https://xhrr.github.io/post/yi-ge-hai-zi-de-xing-xing-meng-di-geng-si/">
+              <a href="https://xhrr.github.io/post/da-jian-gridea-bo-ke/">
                 <h3 class="post-title">
-                  一个孩子的星星梦  ---狄更斯
+                  搭建Gridea博客
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
