@@ -30,53 +30,9 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            emmmmmmm
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-twitter-line"></i>
-                </a>
-              
-            
-              
-                <a href="https://weibo.com/u/5655411005" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-weibo-line"></i>
-                </a>
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-zhihu-line"></i>
-                </a>
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-facebook-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-instagram-line"></i>
-                </a>
-              
-            
-              
-            
-              
-                <a href="https://qm.qq.com/cgi-bin/qm/qr?k=VqyCYB5bbcvXgJxV2tri8I0btHNSLMp5" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-qq-line"></i>
-                </a>
-              
+          <div class="toc-container hidden lg:block">
             
           </div>
         </div>
@@ -133,33 +89,71 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-2-line"></i> 标签云
-        </h2>
-        <div class="tags-container">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">前言</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-01-30 / 1 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+<p>🏠 关于本站<br>
+这里是大青的blog😀😀😀😀😀</p>
+<p>👨‍💻 博主是谁<br>
+大青😆😆😆</p>
+<p>⛹ 兴趣爱好<br>
+吃饭睡觉打豆豆😑😑😑😑</p>
+<p>📬 联系我呀<br>
+QQ：2489216758🐶</p>
+
+        </div>
+
+        
+
+
+        <div class="flex justify-between py-8">
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/font-end/" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-              <span class="flex-auto">前端</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">5</span>
-            </a>
+            <div class="prev-post">
+              <a href="https://xhrr.github.io/da-jian-gridea-bo-ke/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  搭建Gridea博客
+                </h3>
+              </a>
+            </div>
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/hkhgThBUH/" :style="{ 'animation-delay': `${1 * 0.2}s` }">
-              <span class="flex-auto">前端小demo</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">5</span>
-            </a>
-          
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/after-end/" :style="{ 'animation-delay': `${2 * 0.2}s` }">
-              <span class="flex-auto">后端</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">1</span>
-            </a>
-          
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/jishu/" :style="{ 'animation-delay': `${3 * 0.2}s` }">
-              <span class="flex-auto">技术</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">7</span>
-            </a>
+
           
         </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'dab5b27aad29f8866577',
+    clientSecret: '742b92f024e44585437e17d88b37f802a7e7d843',
+    repo: 'xhrr.github.io',
+    owner: 'xhrr',
+    admin: ['xhrr'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
       </div>
     </div>
 

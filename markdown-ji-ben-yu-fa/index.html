@@ -1,0 +1,521 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>大青的Blog</title>
+<meta name="description" content="emmmmmmm" />
+<link rel="shortcut icon" href="https://xhrr.github.io//favicon.ico?v=1595914377742">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xhrr.github.io//styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xhrr.github.io/">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xhrr.github.io//images/avatar.png?v=1595914377742" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">大青的Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80%E6%A0%87%E9%A2%98">一，标题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%80">一</a>
+<ul>
+<li><a href="#%E4%BA%8C">二</a>
+<ul>
+<li><a href="#%E4%B8%89">三</a>
+<ul>
+<li><a href="#%E5%9B%9B">四</a>
+<ul>
+<li><a href="#%E4%BA%94">五</a>
+<ul>
+<li><a href="#%E5%85%AD">六</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C%E6%AE%B5%E8%90%BD%E6%A0%BC%E5%BC%8F">二，段落格式</a>
+<ul>
+<li><a href="#1%E5%AD%97%E4%BD%93">（1）字体</a></li>
+<li><a href="#2%E5%88%86%E5%89%B2%E7%BA%BF">（2）分割线</a></li>
+<li><a href="#3%E5%88%A0%E9%99%A4%E7%BA%BF%E4%B8%8B%E5%88%92%E7%BA%BF">（3）删除线，下划线</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89%E5%88%97%E8%A1%A8">三，列表</a>
+<ul>
+<li><a href="#1%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8">（1）无序列表</a></li>
+<li><a href="#2%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8">（2）有序列表</a></li>
+<li><a href="#3%E5%88%97%E8%A1%A8%E5%B5%8C%E5%A5%97">（3）列表嵌套</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B%E5%8C%BA%E5%9D%97">四，区块</a>
+<ul>
+<li><a href="#%E5%8C%BA%E5%9D%97%E5%BC%95%E7%94%A8">区块引用</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94%E4%BB%A3%E7%A0%81%E5%9D%97">五，代码块</a></li>
+<li><a href="#%E5%85%AD%E9%93%BE%E6%8E%A5">六，链接</a></li>
+<li><a href="#%E4%B8%83%E8%A1%A8%E6%A0%BC">七，表格</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+      
+        <a href="https://xhrr.github.io/tag/font-end/" class="menu" style="animation-delay: 0.8s">
+          前端
+        </a>
+      
+    
+      
+        <a href="tag/after-end/" class="menu" style="animation-delay: 1s">
+          后端
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://xhrr.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">Markdown基本语法</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-02-20 / 2 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://xhrr.github.io//post-images/markdown-ji-ben-yu-fa.png" alt="">
+        
+        <div class="post-content yue">
+          <blockquote>
+<p>Markdown是一种可以使用普通文本编辑器编写的<a href="https://baike.baidu.com/item/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/5964436">标记语言</a>，通过简单的标记语法，它可以使普通文本内容具有一定的格式。（百度百科</p>
+</blockquote>
+<h2 id="一标题">一，标题</h2>
+<pre><code class="language-)"># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+</code></pre>
+<h1 id="一">一</h1>
+<h2 id="二">二</h2>
+<h3 id="三">三</h3>
+<h4 id="四">四</h4>
+<h5 id="五">五</h5>
+<h6 id="六">六</h6>
+<h2 id="二段落格式">二，段落格式</h2>
+<h3 id="1字体">（1）字体</h3>
+<pre><code class="language-)">*圆点
+*斜体文本*
+_斜体文本_
+**粗体文本**
+__粗体文本__
+***粗斜体文本***
+___粗斜体文本___
+
+</code></pre>
+<p>示例：</p>
+<ul>
+<li>
+<p>圆点</p>
+</li>
+<li>
+<p><em>斜体</em></p>
+</li>
+<li>
+<p><em>斜体</em></p>
+</li>
+<li>
+<p><strong>粗体</strong></p>
+</li>
+<li>
+<p><strong>粗体</strong></p>
+</li>
+<li>
+<p><em><strong>粗体斜文本</strong></em></p>
+</li>
+<li>
+<p><em><strong>粗体斜文本</strong></em></p>
+</li>
+</ul>
+<h3 id="2分割线">（2）分割线</h3>
+<pre><code>***
+
+* * *
+
+*****
+
+- - -
+
+----------
+</code></pre>
+<p>示例：</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<h3 id="3删除线下划线">（3）删除线，下划线</h3>
+<pre><code>~~删除内容~~
+&lt;u&gt;下划线&lt;/u&gt;
+[^要注脚的文字 ]：文字
+</code></pre>
+<p>示例：</p>
+<p><s>删除内容</s></p>
+<p><u>下划线</u></p>
+<h2 id="三列表">三，列表</h2>
+<h3 id="1无序列表">（1）无序列表</h3>
+<pre><code>* 第一项
+* 第二项
+* 第三项
+
++ 第一项
++ 第二项
++ 第三项
+
+
+- 第一项
+- 第二项
+- 第三项
+</code></pre>
+<p>示例：</p>
+<ul>
+<li>
+<p>第一项</p>
+</li>
+<li>
+<p>第二项</p>
+</li>
+<li>
+<p>第三项</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>第一项</p>
+</li>
+<li>
+<p>第二项</p>
+</li>
+<li>
+<p>第三项</p>
+</li>
+</ul>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<h3 id="2有序列表">（2）有序列表</h3>
+<pre><code>1. 第一项
+2. 第二项
+3. 第三项
+</code></pre>
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ol>
+<h3 id="3列表嵌套">（3）列表嵌套</h3>
+<pre><code>1. 第一项：
+    - 第一项嵌套的第一个元素
+    - 第一项嵌套的第二个元素
+2. 第二项：
+    - 第二项嵌套的第一个元素
+    - 第二项嵌套的第二个元素
+</code></pre>
+<p>示例：</p>
+<ol>
+<li>第一项：
+<ul>
+<li>第二层嵌套元素
+<ul>
+<li>第三层嵌套元素</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="四区块">四，区块</h2>
+<h3 id="区块引用">区块引用</h3>
+<pre><code>&gt; 区块引用
+&gt;&gt; emmm似乎可以一直嵌套下去
+</code></pre>
+<p>示例：</p>
+<blockquote>
+<p>区块引用</p>
+<blockquote>
+<p>emmmm</p>
+<blockquote>
+<p>emmmmmmm</p>
+<blockquote>
+<p>emmmmmmmmmmmm</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="五代码块">五，代码块</h2>
+<pre><code>​```
+注脚：为三个反引号，可以选择语言如PHP等，也可以不选
+</code></pre>
+<h2 id="六链接">六，链接</h2>
+<pre><code>[链接名称](链接地址)
+
+&lt;链接地址&gt;
+</code></pre>
+<p>示例：</p>
+<p>[ 谷歌 ]（http://www.google.cn/）</p>
+<p><a href="http://www.google.cn/">http://www.google.cn/</a></p>
+<h2 id="七表格">七，表格</h2>
+<pre><code>|  表头   | 表头  |
+|  ----  | ----  |
+| 单元格  | 单元格 |
+| 单元格  | 单元格 |
+
+对齐方式：
+-: 设置内容和标题栏居右对齐。
+:- 设置内容和标题栏居左对齐。
+:-: 设置内容和标题栏居中对齐。
+</code></pre>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/jishu/">
+            <span class="flex-auto">技术</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xhrr.github.io/mysql-xue-xi-bi-ji/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  MySQL学习笔记（摘
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xhrr.github.io/liang-fen-zhong-jian-yi-ban-css-zhi-grid-bu-ju/">
+                <h3 class="post-title">
+                  两分钟简易版CSS之Grid布局
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'dab5b27aad29f8866577',
+    clientSecret: '742b92f024e44585437e17d88b37f802a7e7d843',
+    repo: 'xhrr.github.io',
+    owner: 'xhrr',
+    admin: ['xhrr'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+      </div>
+    </div>
+
+    <script src="https://xhrr.github.io//media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

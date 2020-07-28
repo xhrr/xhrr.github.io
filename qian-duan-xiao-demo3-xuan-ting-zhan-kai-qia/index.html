@@ -1,0 +1,443 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>大青的Blog</title>
+<meta name="description" content="emmmmmmm" />
+<link rel="shortcut icon" href="https://xhrr.github.io//favicon.ico?v=1595914377742">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xhrr.github.io//styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xhrr.github.io/">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xhrr.github.io//images/avatar.png?v=1595914377742" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">大青的Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%BC%94%E7%A4%BA">演示</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a>
+<ul>
+<li><a href="#html">HTML:</a></li>
+<li><a href="#css">CSS:</a></li>
+<li><a href="#js">JS:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+      
+        <a href="https://xhrr.github.io/tag/font-end/" class="menu" style="animation-delay: 0.8s">
+          前端
+        </a>
+      
+    
+      
+        <a href="tag/after-end/" class="menu" style="animation-delay: 1s">
+          后端
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://xhrr.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">前端小demo（3）--悬停展开卡</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-04-22 / 5 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://gitee.com/dqdxz/image/raw/master/img/demo3.png" alt="">
+        
+        <div class="post-content yue">
+          <h4 id="前言">前言</h4>
+<pre><code>资源来自互联网，比如B站的很多UP主，油管，用于自己的学习提升。
+</code></pre>
+<h4 id="演示">演示</h4>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/dqdxz/image/raw/master/img/demo3.png" alt="" loading="lazy"></figure>
+<h4 id="代码">代码</h4>
+<h5 id="html">HTML:</h5>
+<pre><code class="language-HTML">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+    &lt;script src=&quot;js/all.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;card&quot;&gt;&lt;!--第一个卡片--&gt;
+            &lt;div class=&quot;face face1&quot;&gt; &lt;!--显示页--&gt;
+                &lt;div class=&quot;content&quot;&gt; &lt;!--显示页内容--&gt;
+                    &lt;i class=&quot;fab fa-js fa-6x&quot;&gt;&lt;/i&gt;
+                    &lt;h3&gt;Script&lt;/h3&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;face face2&quot;&gt; &lt;!--附页--&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;p&gt;JavaScript是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。&lt;/p&gt;
+                    &lt;a href=&quot;#&quot;&gt;Read More&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt; &lt;!--第二个卡片--&gt;
+            &lt;div class=&quot;face face1&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;i class=&quot;fab fa-html5 fa-6x&quot;&gt;&lt;/i&gt;
+                    &lt;h3&gt;Html5&lt;/h3&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;face face2&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;p&gt;HTML5是构建Web内容的一种语言描述方式。&lt;/p&gt;
+                    &lt;a href=&quot;#&quot;&gt;Read More&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;&lt;!--第三个卡片--&gt;
+            &lt;div class=&quot;face face1&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;i class=&quot;fab fa-css3-alt fa-6x&quot;&gt;&lt;/i&gt;
+                    &lt;h3&gt;CSS3&lt;/h3&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;face face2&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;p&gt;CSS3是CSS（层叠样式表）技术的升级版本。&lt;/p&gt;
+                    &lt;a href=&quot;#&quot;&gt;Read More&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="css">CSS:</h5>
+<pre><code class="language-CSS">body{
+    margin: 0; /*外边距*/
+    padding: 0; /*内边距*/
+    min-height: 100vh;  /*最小高度*/
+    background: #333; /*背景颜色*/
+    display: flex; /*盒模型*/
+    justify-content: center; /*文档X轴布局*/
+    align-items: center; /*文档Y轴布局*/
+}
+.container{
+    width: 1000px; /*宽度*/
+    position: relative; /*相对定位*/
+    display: flex; /*盒模型*/
+    justify-content: space-between; /*文档X轴内容与内容间空隙相等*/
+}
+.container .card{
+    position: relative; /*相对定位*/
+}
+.container .card .face{ 
+    width: 300px; 
+    height: 200px; 
+    transition: 0.5s; /*过渡时间*/
+}
+.container .card .face.face1{ 
+    position: relative; 
+    background: #333; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1; 
+    transform: translateY(100px); /*2D转换，Y轴移动*/
+} 
+.container .card:hover .face.face1{ /*此处为card标签悬停时，内容1复位*/
+    background: #ff0057; 
+    transform: translateY(0); 
+}
+.container .card .face.face1 .content{
+    opacity: 0.5; /*透明度*/
+    transition: 0.5s; 
+}
+.container .card:hover .face.face1 .content{ /*此处为card标签悬停时，更改封面的透明度*/
+    opacity: 1; /*透明度*/
+}
+.container .card .face.face1 .content h3{
+    margin: 10px 0 0; 
+    padding: 0; 
+    color:#fff; 
+    text-align: center; /*字体居中*/
+    font-size: 1.5em; /*字体大小*/
+}
+.container .card .face.face2{
+    position: relative; 
+    background: #fff; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    box-sizing: border-box; /*设置盒子模型内布局，此处为元素的内边距盒边框不会影响最终大小*/
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8); /*阴影*/
+    transform: translateY(-100px); /*2D转换，Y轴移动*/
+}
+.container .card:hover .face.face2{ /*此处为card标签悬停时，内容2复位*/
+    transform: translateY(0px); 
+}
+.container .card .face.face2 p{
+    margin: 0; 
+    padding: 0; 
+}
+.container .card .face.face2 a{
+    margin:  15px 0 0; 
+    display: inline-block; /*设置为行内块元素*/
+    text-decoration: none; /*文字样式，此处为了删除下划线*/
+    font-weight: 900; /*字体粗细*/
+    color: #333; 
+    padding: 5px; 
+    border: 1px solid #333; 
+}
+.container .card .face.face2 a:hover{ /*此处为a标签悬停时*/
+    background: #333; 
+    color: #fff; 
+}
+</code></pre>
+<h5 id="js">JS:</h5>
+<pre><code class="language-javascript">Font Awesome Free 5.12.0 by @fontawesome - https://fontawesome.com
+</code></pre>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/font-end/">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/hkhgThBUH/">
+            <span class="flex-auto">前端小demo</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xhrr.github.io/qian-duan-xiao-demo4-shou-feng-qin-cai-dan/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  前端小demo（4）--手风琴菜单
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xhrr.github.io/qian-duan-xiao-demo2-zhou-ye-mo-shi/">
+                <h3 class="post-title">
+                   前端小demo（2）--昼夜模式
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'dab5b27aad29f8866577',
+    clientSecret: '742b92f024e44585437e17d88b37f802a7e7d843',
+    repo: 'xhrr.github.io',
+    owner: 'xhrr',
+    admin: ['xhrr'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+      </div>
+    </div>
+
+    <script src="https://xhrr.github.io//media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

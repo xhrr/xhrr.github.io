@@ -30,54 +30,22 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            emmmmmmm
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-twitter-line"></i>
-                </a>
-              
-            
-              
-                <a href="https://weibo.com/u/5655411005" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-weibo-line"></i>
-                </a>
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-zhihu-line"></i>
-                </a>
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-facebook-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-instagram-line"></i>
-                </a>
-              
-            
-              
-            
-              
-                <a href="https://qm.qq.com/cgi-bin/qm/qr?k=VqyCYB5bbcvXgJxV2tri8I0btHNSLMp5" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-qq-line"></i>
-                </a>
-              
-            
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80%E6%95%B0%E6%8D%AE%E5%BA%93">一，数据库</a></li>
+<li><a href="#%E4%BA%8Cphp%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93">二，PHP链接数据库</a></li>
+<li><a href="#%E4%B8%89%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%85%B3%E5%8F%98%E9%87%8F">三，定义相关变量</a></li>
+<li><a href="#%E5%9B%9B%E5%AE%9A%E4%B9%89%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E5%B9%B6%E6%89%A7%E8%A1%8C">四，定义查询语句，并执行</a></li>
+<li><a href="#%E4%BA%94%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%BE%93%E5%87%BA">五，获取数据并输出</a></li>
+<li><a href="#%E5%85%AD%E6%95%B4%E4%BD%93%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%95%88%E6%9E%9C">六，整体代码及效果</a></li>
+</ul>
+</li>
+</ul>
+
           </div>
         </div>
       
@@ -133,33 +101,158 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-2-line"></i> 标签云
-        </h2>
-        <div class="tags-container">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">利用PHP输出json</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-04-17 / 2 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://xhrr.github.io//post-images/li-yong-php-shu-chu-json.png" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="一数据库">一，数据库</h2>
+<p>为了方便就使用了之前的用来登录和注册的测试数据库。</p>
+<p>数据如下：</p>
+<figure data-type="image" tabindex="1"><img src="https://xhrr.github.io//post-images/1587288352919.png" alt="" loading="lazy"></figure>
+<h2 id="二php链接数据库">二，PHP链接数据库</h2>
+<pre><code>&lt;?php
+//连接mysql数据库  $con钥匙
+	$con=mysqli_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;root&quot;);
+	
+	//设置字符集
+	header('Content-type:text/html;charset=utf-8');
+	
+	//选择数据库
+	mysqli_query($con,&quot;use test&quot;);
+?&gt;
+</code></pre>
+<p>和之前的登陆注册操作一样。</p>
+<h2 id="三定义相关变量">三，定义相关变量</h2>
+<pre><code>$json = '';
+$data = array();
+class  User{
+    public $id;
+    public $username;
+    public $password;
+}
+</code></pre>
+<h2 id="四定义查询语句并执行">四，定义查询语句，并执行</h2>
+<pre><code>$sql=&quot;select * from wlb&quot;;
+$result = $con-&gt;query($sql);
+</code></pre>
+<h2 id="五获取数据并输出">五，获取数据并输出</h2>
+<pre><code>if($result){
+    while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
+    {
+        $user = new User();
+        $user-&gt;id = $row[&quot;id&quot;];
+        $user-&gt;username = $row[&quot;username&quot;];
+        $user-&gt;password = $row[&quot;password&quot;];
+        $data[]=$user;
+    }
+//    $json = json_encode($data);因为这条语句无法输出中文，所以换成下面这个语句
+    $json = json_encode($data,JSON_UNESCAPED_UNICODE);
+    echo &quot;{&quot;.'&quot;user&quot;'. &quot;:&quot;.$json.&quot; }&quot;;
+}else{
+    echo &quot;查询失败&quot;;
+}
+</code></pre>
+<h2 id="六整体代码及效果">六，整体代码及效果</h2>
+<pre><code>&lt;?php
+include_once (&quot;conn.php&quot;);
+$json = '';
+$data = array();
+class  User{
+    public $id;
+    public $username;
+    public $password;
+}
+$sql=&quot;select * from wlb&quot;;
+$result = $con-&gt;query($sql);
+if($result){
+    while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
+    {
+        $user = new User();
+        $user-&gt;id = $row[&quot;id&quot;];
+        $user-&gt;username = $row[&quot;username&quot;];
+        $user-&gt;password = $row[&quot;password&quot;];
+        $data[]=$user;
+    }
+//    $json = json_encode($data);
+    $json = json_encode($data,JSON_UNESCAPED_UNICODE);
+    echo &quot;{&quot;.'&quot;user&quot;'. &quot;:&quot;.$json.&quot; }&quot;;
+}else{
+    echo &quot;查询失败&quot;;
+}
+?&gt;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://xhrr.github.io//post-images/1587288854795.png" alt="" loading="lazy"></figure>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/after-end/">
+            <span class="flex-auto">后端</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/jishu/">
+            <span class="flex-auto">技术</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/font-end/" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-              <span class="flex-auto">前端</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">5</span>
-            </a>
+            <div class="prev-post">
+              <a href="https://xhrr.github.io/qian-duan-xiao-demo1-kuai-shi-dan-chuang/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                   前端小demo（1）--快视弹窗
+                </h3>
+              </a>
+            </div>
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/hkhgThBUH/" :style="{ 'animation-delay': `${1 * 0.2}s` }">
-              <span class="flex-auto">前端小demo</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">5</span>
-            </a>
+
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/after-end/" :style="{ 'animation-delay': `${2 * 0.2}s` }">
-              <span class="flex-auto">后端</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">1</span>
-            </a>
-          
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/jishu/" :style="{ 'animation-delay': `${3 * 0.2}s` }">
-              <span class="flex-auto">技术</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">7</span>
-            </a>
+            <div class="next-post">
+              <a href="https://xhrr.github.io/jian-dan-de-qian-hou-duan-jiao-hu-ajax_jqueryphp/">
+                <h3 class="post-title">
+                  简单的前后端交互--Ajax_ jQuery，PHP
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'dab5b27aad29f8866577',
+    clientSecret: '742b92f024e44585437e17d88b37f802a7e7d843',
+    repo: 'xhrr.github.io',
+    owner: 'xhrr',
+    admin: ['xhrr'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
       </div>
     </div>
 

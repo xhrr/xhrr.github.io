@@ -30,54 +30,33 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            emmmmmmm
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-twitter-line"></i>
-                </a>
-              
-            
-              
-                <a href="https://weibo.com/u/5655411005" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-weibo-line"></i>
-                </a>
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-zhihu-line"></i>
-                </a>
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-facebook-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-                <a href="emm" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-instagram-line"></i>
-                </a>
-              
-            
-              
-            
-              
-                <a href="https://qm.qq.com/cgi-bin/qm/qr?k=VqyCYB5bbcvXgJxV2tri8I0btHNSLMp5" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-qq-line"></i>
-                </a>
-              
-            
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%BC%94%E7%A4%BA">演示</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a>
+<ul>
+<li><a href="#html">HTML:</a></li>
+<li><a href="#css">CSS:</a></li>
+<li><a href="#js">JS:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
           </div>
         </div>
       
@@ -133,33 +112,151 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-2-line"></i> 标签云
-        </h2>
-        <div class="tags-container">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">前端小demo（5）--移动边框按钮</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-04-24 / 2 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://gitee.com/dqdxz/image/raw/master/img/demo5.png" alt="">
+        
+        <div class="post-content yue">
+          <h4 id="前言">前言</h4>
+<pre><code>资源来自互联网，比如B站的很多UP主，油管，用于自己的学习提升。
+</code></pre>
+<h4 id="演示">演示</h4>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/dqdxz/image/raw/master/img/demo5.png" alt="" loading="lazy"></figure>
+<h4 id="代码">代码</h4>
+<h5 id="html">HTML:</h5>
+<pre><code class="language-HTML">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button class=&quot;btn&quot;&gt;
+        Hover
+    &lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="css">CSS:</h5>
+<pre><code class="language-CSS">html,body{
+    padding: 0; /*内边距*/
+    margin: 0; /*外边距*/
+    font-family: sans-serif; /*字体*/
+}
+body{
+    background: #353b48; /*背景颜色*/
+    height: 100vh; /*高*/
+    display: flex; /*盒模型*/
+    align-items: center; /*模型Y居中*/
+    justify-content: center; /*模型X轴居中*/
+}
+.btn{
+    width: 200px; /*宽度*/
+    height: 60px; /*高度*/
+    background:none;
+    border: 4px solid; /*边框*/
+    font-weight: 700; /*字体粗细*/
+    text-transform: uppercase; /*字体大写*/
+    cursor: pointer; /*鼠标悬停时的样式*/
+    outline:none; /*点击后按钮不显示边框*/
+    font-size: 16px;
+    position: relative; /*相对定位*/
+    color: #3498db; /*字体颜色*/
+}
+.btn::before,.btn::after{ /*边框上的两个线*/
+    content: &quot;&quot;; /*添加内容*/
+    position: absolute;
+    width: 14px;
+    height: 4px;
+    background: #353b48;
+    transform: skewX(50deg); /*X轴进行倾斜*/
+    transition: 0.5s; /**/
+}
+.btn::before{ 
+    top:-4px; 
+    left: 10%; 
+}
+.btn::after{
+    right: 10%;
+    bottom: -4px;
+}
+.btn:hover::before{ /*当鼠标悬停时*/
+    top:-4px;
+    left: 80%;
+}
+.btn:hover::after{ /*当鼠标悬停时*/
+    right: 80%;
+    bottom: -4px;
+}
+
+</code></pre>
+<h5 id="js">JS:</h5>
+<pre><code class="language-javascript">NULL
+</code></pre>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/font-end/">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/hkhgThBUH/">
+            <span class="flex-auto">前端小demo</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/font-end/" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-              <span class="flex-auto">前端</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">5</span>
-            </a>
+
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/hkhgThBUH/" :style="{ 'animation-delay': `${1 * 0.2}s` }">
-              <span class="flex-auto">前端小demo</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">5</span>
-            </a>
-          
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/after-end/" :style="{ 'animation-delay': `${2 * 0.2}s` }">
-              <span class="flex-auto">后端</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">1</span>
-            </a>
-          
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/jishu/" :style="{ 'animation-delay': `${3 * 0.2}s` }">
-              <span class="flex-auto">技术</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">7</span>
-            </a>
+            <div class="next-post">
+              <a href="https://xhrr.github.io/qian-duan-xiao-demo4-shou-feng-qin-cai-dan/">
+                <h3 class="post-title">
+                  前端小demo（4）--手风琴菜单
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'dab5b27aad29f8866577',
+    clientSecret: '742b92f024e44585437e17d88b37f802a7e7d843',
+    repo: 'xhrr.github.io',
+    owner: 'xhrr',
+    admin: ['xhrr'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
       </div>
     </div>
 
