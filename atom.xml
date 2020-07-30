@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xhrr.github.io/</id>
     <title>大青的Blog</title>
-    <updated>2020-07-28T05:37:18.112Z</updated>
+    <updated>2020-07-30T04:18:53.789Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xhrr.github.io/"/>
     <link rel="self" href="https://xhrr.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://xhrr.github.io/images/avatar.png</logo>
     <icon>https://xhrr.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 大青的Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[前端小demo（9）--3D动画]]></title>
+        <id>https://xhrr.github.io/PNelxuWnO/</id>
+        <link href="https://xhrr.github.io/PNelxuWnO/">
+        </link>
+        <updated>2020-04-29T04:14:42.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端小demo（8）--悬停]]></title>
+        <id>https://xhrr.github.io/_UM4oW8i7/</id>
+        <link href="https://xhrr.github.io/_UM4oW8i7/">
+        </link>
+        <updated>2020-04-28T04:04:51.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端小demo（7）--时钟]]></title>
+        <id>https://xhrr.github.io/QiuTNdwhR/</id>
+        <link href="https://xhrr.github.io/QiuTNdwhR/">
+        </link>
+        <updated>2020-04-26T03:59:09.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端小demo（6）--动态背景随标题变换菜单]]></title>
+        <id>https://xhrr.github.io/cJqGo3xBz/</id>
+        <link href="https://xhrr.github.io/cJqGo3xBz/">
+        </link>
+        <updated>2020-04-25T03:52:56.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[前端小demo（5）--移动边框按钮]]></title>
         <id>https://xhrr.github.io/qian-duan-xiao-demo5-yi-dong-bian-kuang-an-niu/</id>
@@ -51,33 +79,5 @@
         <link href="https://xhrr.github.io/li-yong-php-shu-chu-json/">
         </link>
         <updated>2020-04-17T09:25:19.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[简单的前后端交互--Ajax_ jQuery，PHP]]></title>
-        <id>https://xhrr.github.io/jian-dan-de-qian-hou-duan-jiao-hu-ajax_jqueryphp/</id>
-        <link href="https://xhrr.github.io/jian-dan-de-qian-hou-duan-jiao-hu-ajax_jqueryphp/">
-        </link>
-        <updated>2020-04-15T10:59:00.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[PHP入门之注册及登录操作]]></title>
-        <id>https://xhrr.github.io/php-ru-men-zhi-zhu-ce-ji-deng-lu-cao-zuo/</id>
-        <link href="https://xhrr.github.io/php-ru-men-zhi-zhu-ce-ji-deng-lu-cao-zuo/">
-        </link>
-        <updated>2020-04-07T08:47:35.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MySQL学习笔记（摘]]></title>
-        <id>https://xhrr.github.io/mysql-xue-xi-bi-ji/</id>
-        <link href="https://xhrr.github.io/mysql-xue-xi-bi-ji/">
-        </link>
-        <updated>2020-03-07T11:37:05.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Markdown基本语法]]></title>
-        <id>https://xhrr.github.io/markdown-ji-ben-yu-fa/</id>
-        <link href="https://xhrr.github.io/markdown-ji-ben-yu-fa/">
-        </link>
-        <updated>2020-02-20T08:17:59.000Z</updated>
     </entry>
 </feed>

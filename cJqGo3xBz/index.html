@@ -33,7 +33,30 @@
             文章目录
           </p>
           <div class="toc-container hidden lg:block">
-            
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%BC%94%E7%A4%BA">演示</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a>
+<ul>
+<li><a href="#html">HTML:</a></li>
+<li><a href="#css">CSS:</a></li>
+<li><a href="#js">JS:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
           </div>
         </div>
       
@@ -90,39 +113,165 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">前言</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">前端小demo（6）--动态背景随标题变换菜单</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-01-30 / 1 min read
+          2020-04-25 / 4 min read
         </div>
         
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://gitee.com/dqdxz/image/raw/master/img/demo6.png" alt="">
+        
         <div class="post-content yue">
-          <p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-<p>🏠 关于本站<br>
-这里是大青的blog😀😀😀😀😀</p>
-<p>👨‍💻 博主是谁<br>
-大青😆😆😆</p>
-<p>⛹ 兴趣爱好<br>
-吃饭睡觉打豆豆😑😑😑😑</p>
-<p>📬 联系我呀<br>
-QQ：2489216758🐶</p>
+          <h4 id="前言">前言</h4>
+<pre><code>资源来自互联网，比如B站的很多UP主，油管，用于自己的学习提升。
+</code></pre>
+<h4 id="演示">演示</h4>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/dqdxz/image/raw/master/img/demo6.png" alt="" loading="lazy"></figure>
+<h4 id="代码">代码</h4>
+<h5 id="html">HTML:</h5>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;动态背景随标题变换菜单&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;navigation&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot; data-text=&quot;Home&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; &lt;!--data-text为背景字体--&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot; data-text=&quot;About&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot; data-text=&quot;Services&quot;&gt;Services&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot; data-text=&quot;Work&quot;&gt;Work&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot; data-text=&quot;Team&quot;&gt;Team&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot; data-text=&quot;Contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="css">CSS:</h5>
+<pre><code class="language-CSS">*{
+    margin: 0; /*外边距*/
+    padding:0; /*内边距*/
+    font-family:sans-serif; /**/
+    box-sizing: border-box; /**/
+}
+.navigation{
+    display:flex; /*盒模型*/
+    justify-content:center; /*X轴对齐方式*/
+    align-items:center; /*Y轴对齐方式*/
+    min-height:100vh; /*最小高度*/
+    overflow:hidden; /*超出内容*/
+}
+.navigation ul{
+    position:relative; /*相对定位*/
+}
+.navigation ul li{
+    text-align:center; /*字体居中*/
+    list-style: none; /*清除默认样式*/
+}
+.navigation ul li a{
+    color: #333; /*字体颜色*/
+    text-decoration:none; /*字体样式，此处清除下划线*/
+    font-size:3em; /*字体大小*/
+    padding:5px 20px; /*内边距*/
+    display:inline-flex; /*行内盒模型*/
+    font-weight:700; /*字体粗度*/
+    transition:0.5s; /*过渡时间*/
+}
+.navigation ul:hover li a {
+    color:#0002;
+}
+.navigation ul:hover li:hover a{
+    color:#000;
+    background-color:#ff0;
+}
+.navigation ul:hover li a:before{
+    height: 500vh;
+    content:&quot;&quot;;
+    position:absolute; /*绝对定位*/
+    top:0%;
+    left:50%;
+    display:flex;
+    transform:translate(-50%,-50%); /*修改元素定位中心点*/
+    justify-content:center;
+    align-items:center;
+    font-size:5em;
+    color:rgba(0,0,0,0.1);
+    z-index: -1; /*修改Z轴排序，类似于PS图层*/
+    opacity:0; /*透明度*/
+    font-weight:900;
+    text-transform:uppercase; /*字体大写*/
+    letter-spacing:500px; /*文本字符间距*/
+    transition:letter-spacing 1s,top 0.5s; /*修改指定属性的过渡时间*/
+}
+.navigation ul li a:hover:before{
+    content:attr(data-text); /*增加标签内容*/ /*详解：https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr*/
+    opacity:1; /*透明度*/
+    top:50%;
+    letter-spacing: 20px; /*字符间距*/
+    width: 150vw;
+    
+}
+.navigation ul li:nth-child(6n+1) a:before{ /**/
+    background-color: #81ecec;
+}
+.navigation ul li:nth-child(6n+2) a:before{
+    background-color: #2ecc71;
+}
+.navigation ul li:nth-child(6n+3) a:before{
+    background-color: #e74c3c;
+}
+.navigation ul li:nth-child(6n+4) a:before{
+    background-color: #f1c40f
+}
+.navigation ul li:nth-child(6n+5) a:before{
+    background-color: #9b59b6;
+}
+.navigation ul li:nth-child(6n+6) a:before{
+    background-color: #3498db;
+}
+</code></pre>
+<h5 id="js">JS:</h5>
+<pre><code class="language-javascript">NULL
+</code></pre>
 
         </div>
 
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/font-end/">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xhrr.github.io/hkhgThBUH/">
+            <span class="flex-auto">前端小demo</span>
+          </a>
         
 
 
         <div class="flex justify-between py-8">
           
             <div class="prev-post">
-              <a href="https://xhrr.github.io/da-jian-gridea-bo-ke/">
+              <a href="https://xhrr.github.io/QiuTNdwhR/">
                 <h3 class="post-title">
                   <i class="ri-arrow-left-line"></i>
-                  搭建Gridea博客
+                  前端小demo（7）--时钟
                 </h3>
               </a>
             </div>
           
 
+          
+            <div class="next-post">
+              <a href="https://xhrr.github.io/qian-duan-xiao-demo5-yi-dong-bian-kuang-an-niu/">
+                <h3 class="post-title">
+                  前端小demo（5）--移动边框按钮
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
 
