@@ -4,13 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>大青的Blog</title>
 <meta name="description" content="emmmmmmm" />
-<link rel="shortcut icon" href="https://xhrr.github.io//favicon.ico?v=1596082730529">
+<link rel="shortcut icon" href="https://xhrr.github.io/favicon.ico?v=1596498193527">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<link rel="stylesheet" href="https://xhrr.github.io//styles/main.css">
+<link rel="stylesheet" href="https://xhrr.github.io/styles/main.css">
 
 
 
@@ -22,8 +22,8 @@
     <div class="sidebar-content">
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
-        <a href="https://xhrr.github.io/">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xhrr.github.io//images/avatar.png?v=1596082730529" alt="">
+        <a href="https://xhrr.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xhrr.github.io/images/avatar.png?v=1596498193527" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">大青的Blog</h1>
       </div>
@@ -118,7 +118,7 @@
   </div>
   <div class="site-footer">
     <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
-    <a class="rss" href="https://xhrr.github.io//atom.xml" target="_blank">RSS</a>
+    <a class="rss" href="https://xhrr.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
 <div class="mask" onclick="closeMenu()">
@@ -129,7 +129,7 @@
           2020-02-10 / 6 min read
         </div>
         
-          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://xhrr.github.io//post-images/css-zhi-flex-bu-ju.png" alt="">
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://xhrr.github.io/post-images/css-zhi-flex-bu-ju.png" alt="">
         
         <div class="post-content yue">
           <h2 id="一flex布局">一，Flex布局</h2>
@@ -146,7 +146,7 @@
 </code></pre>
 <h2 id="二基本概念">二，基本概念</h2>
 <p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。<br>
-<img src="https://xhrr.github.io//post-images/1586144856000.png" alt="" loading="lazy"><br>
+<img src="https://xhrr.github.io/post-images/1586144856000.png" alt="" loading="lazy"><br>
 容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。</p>
 <p>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
 <h2 id="三容器的属性">三，容器的属性</h2>
@@ -169,7 +169,7 @@ row-reverse：主轴为水平方向，起点在右端。
 column：主轴为垂直方向，起点在上沿。
 column-reverse：主轴为垂直方向，起点在下沿。
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://xhrr.github.io//post-images/1586144917547.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://xhrr.github.io/post-images/1586144917547.png" alt="" loading="lazy"></figure>
 <h3 id="2-flex-wrap">(2) flex-wrap</h3>
 <p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
 <pre><code>.box{
@@ -178,11 +178,11 @@ column-reverse：主轴为垂直方向，起点在下沿。
 </code></pre>
 <p>有三个值</p>
 <h4 id="nowrap不换行">nowrap:不换行</h4>
-<figure data-type="image" tabindex="2"><img src="https://xhrr.github.io//post-images/1586144951128.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://xhrr.github.io/post-images/1586144951128.png" alt="" loading="lazy"></figure>
 <h4 id="wrap换行第一行在上方">wrap：换行，第一行在上方</h4>
-<figure data-type="image" tabindex="3"><img src="https://xhrr.github.io//post-images/1586144970513.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://xhrr.github.io/post-images/1586144970513.jpg" alt="" loading="lazy"></figure>
 <h4 id="wrap-reverse换行第一行在下方">wrap-reverse：换行，第一行在下方。</h4>
-<figure data-type="image" tabindex="4"><img src="https://xhrr.github.io//post-images/1586144982396.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://xhrr.github.io/post-images/1586144982396.jpg" alt="" loading="lazy"></figure>
 <h3 id="3-flex-flow">(3) flex-flow</h3>
 <p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
 <pre><code>.box {
@@ -196,7 +196,7 @@ column-reverse：主轴为垂直方向，起点在下沿。
 }
 </code></pre>
 <p>有五个值，如图所示<br>
-<img src="https://xhrr.github.io//post-images/1586145111808.png" alt="" loading="lazy"><br>
+<img src="https://xhrr.github.io/post-images/1586145111808.png" alt="" loading="lazy"><br>
 即所谓的，左对齐，右对齐，居中，两端对齐（项目之间的间隔相等），每个项目两侧的间隔相等</p>
 <h3 id="5-align-items">（5） align-items</h3>
 <p>align-items属性定义项目在交叉轴上如何对齐。</p>
@@ -205,7 +205,7 @@ column-reverse：主轴为垂直方向，起点在下沿。
 }
 </code></pre>
 <p>有五个值：<br>
-<img src="https://xhrr.github.io//post-images/1586145139573.png" alt="" loading="lazy"></p>
+<img src="https://xhrr.github.io/post-images/1586145139573.png" alt="" loading="lazy"></p>
 <pre><code>flex-start：交叉轴的起点对齐。
 flex-end：交叉轴的终点对齐。
 center：交叉轴的中点对齐。
@@ -219,7 +219,7 @@ stretch（默认值）：如果项目未设置高度或设为auto，将占满整
 }
 </code></pre>
 <p>有六个值：<br>
-<img src="https://xhrr.github.io//post-images/1586145183393.png" alt="" loading="lazy"></p>
+<img src="https://xhrr.github.io/post-images/1586145183393.png" alt="" loading="lazy"></p>
 <p>六个值：</p>
 <pre><code>flex-start：与交叉轴的起点对齐。
 flex-end：与交叉轴的终点对齐。
@@ -244,7 +244,7 @@ align-self
 }
 </code></pre>
 <p>如图所示：<br>
-<img src="https://xhrr.github.io//post-images/1586145220591.png" alt="" loading="lazy"></p>
+<img src="https://xhrr.github.io/post-images/1586145220591.png" alt="" loading="lazy"></p>
 <h3 id="2-flex-grow">（2） flex-grow</h3>
 <p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
 <pre><code>.item {
@@ -252,7 +252,7 @@ align-self
 }
 </code></pre>
 <p>如图：</p>
-<figure data-type="image" tabindex="5"><img src="https://xhrr.github.io//post-images/1586145239060.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://xhrr.github.io/post-images/1586145239060.png" alt="" loading="lazy"></figure>
 <p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
 <h3 id="3flex-shrink">（3）flex-shrink</h3>
 <p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
@@ -260,7 +260,7 @@ align-self
   flex-shrink: &lt;number&gt;;
 }
 </code></pre>
-<figure data-type="image" tabindex="6"><img src="https://xhrr.github.io//post-images/1586145253172.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://xhrr.github.io/post-images/1586145253172.jpg" alt="" loading="lazy"></figure>
 <p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。负值对该属性无效。</p>
 <h3 id="4flex-basis">（4）flex-basis</h3>
 <p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
@@ -283,7 +283,7 @@ align-self
   align-self: auto | flex-start | flex-end | center | baseline | stretch;
 }
 </code></pre>
-<figure data-type="image" tabindex="7"><img src="https://xhrr.github.io//post-images/1586145276539.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://xhrr.github.io/post-images/1586145276539.png" alt="" loading="lazy"></figure>
 
         </div>
 
@@ -349,7 +349,7 @@ align-self
       </div>
     </div>
 
-    <script src="https://xhrr.github.io//media/prism.js"></script>  
+    <script src="https://xhrr.github.io/media/prism.js"></script>  
 <script>
 
 Prism.highlightAll()
